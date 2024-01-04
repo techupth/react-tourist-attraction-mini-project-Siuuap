@@ -37,12 +37,25 @@ const PlaceList = ({
           </p>
 
           <div className="text-gray-500 flex">
-            {"หมวด -" + " "}
-            {tags.map((tag, index) => {
-              return (
+            <p className="mr-1">หมวด -</p>
+            {tags.map((tag, index, self) => {
+              return index === self.length - 1 ? (
+                <div key={index} className="flex gap-1">
+                  <p>และ </p>
+                  <p
+                    key={index}
+                    className="text-underline decoration-solid mr-2 cursor-pointer underline"
+                    onClick={() => {
+                      handleClick(tag);
+                    }}
+                  >
+                    {tag}
+                  </p>
+                </div>
+              ) : (
                 <p
                   key={index}
-                  className="text-underline decoration-solid mr-1 cursor-pointer"
+                  className="text-underline decoration-solid mr-2 cursor-pointer underline"
                   onClick={() => {
                     handleClick(tag);
                   }}
